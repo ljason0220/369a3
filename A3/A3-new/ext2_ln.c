@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include "ext2.h"
+#include "helper.h"
 #include <string.h>
 
 /* ext2_ln: This program takes three command line arguments. Eirst is name of 

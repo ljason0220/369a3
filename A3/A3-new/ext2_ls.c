@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include "ext2.h"
+#include "helper.h"
 #include <string.h>
 
 /* ext2_ls: This program takes two command line arguments. Name of an ext2 

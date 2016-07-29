@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include "ext2.h"
+#include "helper.h"
 #include <string.h>
 
 /* ext2_mkdir: This program takes two command line arguments. 1. name of an 
