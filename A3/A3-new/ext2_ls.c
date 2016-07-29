@@ -24,11 +24,13 @@ int main(int argc, char **argv) {
     }
 
     int fd = open(argv[1], O_RDWR);
-    disk = mmap(NULL, 128 * 1024, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-  	if(disk == MAP_FAILED) {
-  		perror("mmap");
-    	exit(1);
-	}
+ //    disk = mmap(NULL, 128 * 1024, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+ //  	if(disk == MAP_FAILED) {
+ //  		perror("mmap");
+ //    	exit(1);
+	// }
+
+	read_disk(fd)
 
 	char *path = argv[2];
 	char *absolute;
