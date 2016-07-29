@@ -36,7 +36,29 @@ int main(int argc, char **argv) {
 	char *absolute;
 	absolute = strtok(path, "/");
 
-	
+
+    // start from root (inode number 2) and traverse
+    int inode_dir = 2;
+    while (absolute != NULL) {
+
+        inode_dir = find_dir(inode_dir-1, absolute);
+        
+        // No such directory is found
+        if (inode_dir == -1) {
+            printf("No such file or directory\n");
+            return 0;
+        }
+
+        // next directory in absolute path
+        absolute = strtok(NULL, "/");
+    }
+
+
+    // print to user
+    print_inode(inode_dir-1);
+
+    return 0;
+}
 
 
 }

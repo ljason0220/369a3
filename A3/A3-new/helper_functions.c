@@ -39,6 +39,7 @@ int find_dir(int inode_num, char *dir) {
     // init next inode
     int next = -1;
 
+    //f firat 11 inodes are reserved
     int i;
     for (i = 0; i < 12; i++) {
 
