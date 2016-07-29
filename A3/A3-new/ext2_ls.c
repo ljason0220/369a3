@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
 
 	char *path = argv[2];
 	char *absolute;
+	// get the directory from the absolute path
 	absolute = strtok(path, "/");
 
 
