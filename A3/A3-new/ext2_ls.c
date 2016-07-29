@@ -13,8 +13,7 @@ formatted virtual disk and an absolute path on the ext2 formatted disk. The
 program should work like ls -1. If the flag "-a" is specified (after the 
 disk image argument), your program should also print the . and .. entries. 
 If the path does not exist, print "No such file or directory", and return an 
-ENOENT. 
-*/
+ENOENT. */
 
 int main(int argc, char **argv) {
 

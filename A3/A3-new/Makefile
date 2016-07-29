@@ -18,7 +18,7 @@ ext2_ln: ext2_ln.o helper_functions.o
 ext2_rm: ext2_rm.o helper_functions.o
 	$CC ${CFLAGS} -o $@ $^
 
-%.o: %.c ext2.h
+%.o: %.c ext2.h helper.h
 	$CC ${CFLAGS} -c $<
 
 clean :

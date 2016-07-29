@@ -69,8 +69,8 @@ int find_dir(int inode_num, char *dir) {
 
 
 void print_inode(int inode_num) {
-	struct ext2_inode       cur_inode = inode_table[inode_num];
-    int                     block_idx;
+	struct ext2_inode cur_inode = inode_table[inode_num];
+    int block_idx;
     struct ext2_dir_entry_2 *dir_entry;   
 
     int block_read = 0;
@@ -97,32 +97,9 @@ void print_inode(int inode_num) {
 }
 
 
-int set_inode_bitmap() {
-    unsigned char *inodebitmap;
-    inodebitmap = (disk + EXT2_BLOCK_SIZE * gd->bg_inode_bitmap);
-
-    int index = 1;
-
-    int i;
-    for(i = 0;i < EXT2_BLOCK_SIZE/(sizeof(int) * 64); i++){
-        int j;
-        for(j = 7; j >= 0; j--){
-            // check for unused inode in bitmap
-            if ((!!((inodebitmap[i] << j) & 0x80)) == 0) {
-                gd->bg_free_inodes_count--;
-                inodebitmap[i] = inodebitmap[i] ^ (0x1 << (7-j));
-                return index;
-            }
-            index++;
-        }
-    }
-
-    return -1;
-}
-
 int set_block_bitmap() {
 	unsigned char *blockbitmap;
-    blockbitmap = (disk + EXT2_BLOCK_SIZE * gd->bg_block_bitmap);
+    blockbitmap = (disk + EXT2_BLOCK_SIZE * grpdsc->bg_block_bitmap);
 
     int index = 1;
 
@@ -132,7 +109,7 @@ int set_block_bitmap() {
         for(j = 7; j >= 0; j--){
             // check for unused inode in bitmap
             if ((!!((blockbitmap[i] << j) & 0x80)) == 0) {
-                gd->bg_free_blocks_count--;
+                grpdsc->bg_free_blocks_count--;
                 blockbitmap[i] = blockbitmap[i] ^ (0x1 << (7-j));
                 return index;
             }
@@ -141,6 +118,30 @@ int set_block_bitmap() {
     }
 
 	return -1;
+}
+
+
+int set_inode_bitmap() {
+    unsigned char *inodebitmap;
+    inodebitmap = (disk + EXT2_BLOCK_SIZE * grpdsc->bg_inode_bitmap);
+
+    int index = 1;
+
+    int i;
+    for(i = 0;i < EXT2_BLOCK_SIZE/(sizeof(int) * 64); i++){
+        int j;
+        for(j = 7; j >= 0; j--){
+            // check for unused inode in bitmap
+            if ((!!((inodebitmap[i] << j) & 0x80)) == 0) {
+                grpdsc->bg_free_inodes_count--;
+                inodebitmap[i] = inodebitmap[i] ^ (0x1 << (7-j));
+                return index;
+            }
+            index++;
+        }
+    }
+
+    return -1;
 }
 
 
@@ -187,13 +188,11 @@ void set_new_inode(int inode_num, FILE *source) {
         }
 
     } 
-
-
 }
 
 
 int set_new_entry(int inode_num, int entry_inode_num, char *file_name, int entry_type) {
-    int                     block_idx;
+    int block_idx;
     struct ext2_dir_entry_2 *dir_entry;    
 
     int block_read;
@@ -273,12 +272,12 @@ void set_dir_inode(int inode_num, int parent_inode) {
     dir_entry->file_type = 2;
     strcpy(dir_entry->name, "..");
 
-    gd->bg_used_dirs_count++;
+    grpdsc->bg_used_dirs_count++;
 }
 
 
 void remove_entry(int parent_inode, int inode_num, char *rm_name) {
-    int                     block_idx;
+    int block_idx;
     struct ext2_dir_entry_2 *dir_entry;    
     struct ext2_dir_entry_2 *dir_entry_ahead;    
 
