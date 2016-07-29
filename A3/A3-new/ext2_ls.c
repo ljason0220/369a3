@@ -15,3 +15,26 @@ disk image argument), your program should also print the . and .. entries.
 If the path does not exist, print "No such file or directory", and return an 
 ENOENT. 
 */
+
+int main(int argc, char **argv) {
+
+  if(argc != 3) {
+    fprintf(stderr, "Usage: readimg <image file name> <absolute path>\n");
+    exit(1);
+    }
+
+    int fd = open(argv[1], O_RDWR);
+    disk = mmap(NULL, 128 * 1024, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+  	if(disk == MAP_FAILED) {
+  		perror("mmap");
+    	exit(1);
+	}
+
+	char *path = argv[2];
+	char *absolute;
+	absolute = strtok(path, "/");
+
+	
+
+
+}
