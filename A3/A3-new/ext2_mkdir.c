@@ -8,6 +8,7 @@
 #include "ext2.h"
 #include "helper.h"
 #include <string.h>
+#include <errno.h>
 
 /* ext2_mkdir: This program takes two command line arguments. 1. name of an 
 ext2 formatted virtual disk; and 2. an absolute path on your ext2 formatted 

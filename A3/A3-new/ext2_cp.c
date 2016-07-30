@@ -8,6 +8,7 @@
 #include "ext2.h"
 #include "helper.h"
 #include <string.h>
+#include <errno.h>
 
 /* ext2_cp: This program takes three command line arguments. 1. name of an 
 ext2 formatted virtual disk; 2. path to a file on your native operating 

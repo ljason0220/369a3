@@ -8,6 +8,7 @@
 #include "ext2.h"
 #include "helper.h"
 #include <string.h>
+#include <errno.h>
 
 /* ext2_ls: This program takes two command line arguments. Name of an ext2 
 formatted virtual disk and an absolute path on the ext2 formatted disk. The 
