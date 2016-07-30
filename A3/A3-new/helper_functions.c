@@ -9,6 +9,7 @@
 #include "helper.h"
 #include <string.h>
 #include <errno.h>
+#include <libgen.h>
 
 extern unsigned char *disk;
 extern struct ext2_group_desc *grpdsc;

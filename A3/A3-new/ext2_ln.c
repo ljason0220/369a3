@@ -9,6 +9,7 @@
 #include "helper.h"
 #include <string.h>
 #include <errno.h>
+#include <libgen.h>
 
 /* ext2_ln: This program takes three command line arguments. Eirst is name of 
 an ext2 formatted virtual disk. The other two are absolute paths on your 
