@@ -21,6 +21,7 @@ int main(int argc, char **argv) {
     	exit(1);
     }
 
+    // read disk
     int fd =open(argv[1], O_RDWR);
     read_disk(fd);
 
@@ -29,6 +30,11 @@ int main(int argc, char **argv) {
     char *dest_path = argv[3];
     dest_path = strtok(dest_path, "/");
 
+    // error check: file DNE
+    if(file_to_copy == NULL) {
+        printf("file no exist\n");
+        return ENOENT;
+    } 
 
     // like in ls, we start from root
     int inode_dir = 2;
@@ -54,13 +60,13 @@ int main(int argc, char **argv) {
         return EEXIST;
     }
     
-    /* FIND A AVAILABLE INODE */
+    // find next avaiable inode 
     int new_inode_idx = set_inode_bitmap();
 
-    /* INITIALIZE THAT INODE WITH FILE INTO ITS BLOCKS */
+    // set new inode
     set_new_inode(new_inode_idx - 1, file_to_copy);
 
-    /* SET A NEW ENTRY (INODE WE JUST CREATED) IN THE DIRECTORY INODE */ 
+    // set new entry 
     set_new_entry(inode_dir-1, new_inode_idx, file_name, 1);
 
     return 0;
