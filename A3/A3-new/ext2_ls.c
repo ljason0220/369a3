@@ -18,6 +18,12 @@ disk image argument), your program should also print the . and .. entries.
 If the path does not exist, print "No such file or directory", and return an 
 ENOENT. */
 
+unsigned char *disk;
+struct ext2_group_desc *grpdsc;
+struct ext2_inode *inode_table;
+
+int next_inode(int inode_num, char *dir, struct ext2_inode *inode);
+
 int main(int argc, char **argv) {
 
   if(argc != 3) {

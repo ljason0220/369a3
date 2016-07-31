@@ -19,6 +19,10 @@ where the final directory is to be created does not exist or if the specified
 directory already exists, then your program should return the appropriate 
 error (ENOENT or EEXIST). */
 
+unsigned char *disk;
+struct ext2_group_desc *grpdsc;
+struct ext2_inode *inode_table;
+
 int next_inode(int inode_num, char *dir, struct ext2_inode *inode);
 
 int main(int argc, char **argv) {

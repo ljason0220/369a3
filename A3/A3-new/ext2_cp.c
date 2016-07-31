@@ -17,6 +17,10 @@ system; and 3. an absolute path on your ext2 formatted disk. The program
 should work like cp. If the specified file or target location does not exist, 
 then your program should  return the appropriate error (ENOENT). */
 
+unsigned char *disk;
+struct ext2_group_desc *grpdsc;
+struct ext2_inode *inode_table;
+
 int main(int argc, char **argv) {
 	if(argc != 4) {
     	fprintf(stderr, "Usage: ext2_cp <image file name> <path of source> <absolute path of target>\n");
