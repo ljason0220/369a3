@@ -36,15 +36,15 @@ int main(int argc, char **argv) {
 
     //start from root
     int inode_dir = 2;
-    while (abs_path != NULL) {
+    while (absolute != NULL) {
 
     	// we are now in the correct path
-        if (strcmp(dir_name, abs_path) == 0) {
+        if (strcmp(dir_name, absolute) == 0) {
             break;
         }
 
 
-        inode_dir = find_dir(inode_dir-1, abs_path);
+        inode_dir = find_dir(inode_dir-1, absolute);
         
         // error check: DNE
         if (inode_dir == -1) {
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
         }
 
         // next dir in absolute path
-        abs_path = strtok(NULL, "/");
+        absolute = strtok(NULL, "/");
     }
 
 
