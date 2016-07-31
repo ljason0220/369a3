@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
  //    	exit(1);
 	// }
 
-	read_disk(fd)
+	read_disk(fd);
 
 	char *path = argv[2];
 	char *absolute;
@@ -61,7 +61,4 @@ int main(int argc, char **argv) {
     print_inode(inode_dir-1);
 
     return 0;
-}
-
-
 }
