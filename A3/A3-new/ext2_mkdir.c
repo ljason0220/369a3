@@ -69,13 +69,13 @@ int main(int argc, char **argv) {
     }
 
 
-    /* FIND A AVAILABLE INODE */
+    // find next avaiable inode
     int new_inode_idx = set_inode_bitmap();
 
-    /* SET THIS NEW INODE AS A DIRECTORY*/
+    // set new inode
     set_dir_inode(new_inode_idx - 1, inode_dir);
 
-    /* INSERT THE NEW INODE AS A DIRECTORY ENTRY */
+    // set new entry 
     set_new_entry(inode_dir - 1, new_inode_idx, dir_name, 2);
 
     return 0;
