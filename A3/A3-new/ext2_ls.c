@@ -27,7 +27,9 @@ int next_inode(int inode_num, char *dir, struct ext2_inode *inode);
 int main(int argc, char **argv) {
 
   if( (argc < 3 || argc > 4) || (argc == 4 && argv[2] != "-a")) {
-    fprintf(stderr, "Usage: readimg <image file name> <optional flag -a> <absolute path>\n");
+    if (argc == 4 && argv[2] != "-a") 
+        {printf("ok");}
+    fprintf(stderr, "Usage: readimg <image file name> <optional: flag -a> <absolute path>\n");
     exit(1);
     }
 
