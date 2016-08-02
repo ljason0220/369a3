@@ -12,3 +12,4 @@ void set_new_inode(int inode_num, FILE *source);
 int set_new_entry(int inode_num, int entry_inode_num, char *file_name, int entry_type);
 void set_dir_inode(int inode_num, int parent_inode);
 void remove_entry(int parent_inode, int inode_num, char *rm_name);
+int strcmp(const char *s1, const char *s2);
