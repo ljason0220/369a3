@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
     // call hlper function
 	read_disk(fd);
 
-    if (check == "-a") {
+    if (strcmp(check, flag) == 0) {
 
         char *path = argv[3];
         char *absolute;
