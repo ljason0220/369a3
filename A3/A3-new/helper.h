@@ -1,7 +1,7 @@
 // define functions for helper_functions.c
 
 extern unsigned char *disk;
-extern struct ext2_group_desc *gd;
+extern struct ext2_group_desc *grpdsc;
 extern struct ext2_inode *inode_table;
 void read_disk(int fd);
 int find_dir(int inode_num, char *dir);
