@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
 
 
     // hard coded for flag -a XD
-    printf(".\n..\n");
+    //printf(".\n..\n");
     // helper: print to user
     print_inode(inode_dir-1);
 
