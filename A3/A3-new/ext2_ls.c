@@ -26,8 +26,8 @@ int next_inode(int inode_num, char *dir, struct ext2_inode *inode);
 
 int main(int argc, char **argv) {
 
-  if(argc != 3) {
-    fprintf(stderr, "Usage: readimg <image file name> <absolute path>\n");
+  if( (argc != 3 || argc != 4) || (argc == 4 && argv[2] != "-a")) {
+    fprintf(stderr, "Usage: readimg <image file name> <flag -a> S<absolute path>\n");
     exit(1);
     }
 
@@ -38,6 +38,7 @@ int main(int argc, char **argv) {
  //    	exit(1);
 	// }
 
+    // call hlper function
 	read_disk(fd);
 
 	char *path = argv[2];
@@ -46,7 +47,7 @@ int main(int argc, char **argv) {
 	absolute = strtok(path, "/");
 
 
-    // start from root (inode number 2) and traverse
+    // start from root (inode number 2)
     int inode_dir = 2;
     while (absolute != NULL) {
 
@@ -63,7 +64,7 @@ int main(int argc, char **argv) {
     }
 
 
-    // print to user
+    // helper: print to user
     print_inode(inode_dir-1);
 
     return 0;
