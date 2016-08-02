@@ -26,10 +26,12 @@ int next_inode(int inode_num, char *dir, struct ext2_inode *inode);
 
 int main(int argc, char **argv) {
 
-  if( (argc < 3 || argc > 4) || (argc == 4 && argv[2] != "-a")) {
-    printf("AAA: %s\n BBB: %s\n", argv[1], argv[2]);
-    fprintf(stderr, "Usage: readimg <image file name> <optional: flag -a> <absolute path>\n");
-    exit(1);
+    //test code
+    printf("AAA: %s\nBBB: %s\n", argv[1], argv[2]);
+
+    if( (argc < 3 || argc > 4) || (argc == 4 && argv[2] != "-a")) {
+        fprintf(stderr, "Usage: readimg <image file name> <optional: flag -a> <absolute path>\n");
+        exit(1);
     }
 
     int fd = open(argv[1], O_RDWR);
