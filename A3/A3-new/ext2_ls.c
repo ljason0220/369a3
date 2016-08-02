@@ -37,18 +37,19 @@ int main(int argc, char **argv) {
     // call hlper function
 	read_disk(fd);
 
-    char *check = argv[2]
-    if (argv[2] == "-a") {
+    char *check = argv[2];
+
+    if (check == "-a") {
 
         char *path = argv[3];
-    char *absolute;
-    // get the directory from the absolute path
-    absolute = strtok(path, "/");
+        char *absolute;
+        // get the directory from the absolute path
+        absolute = strtok(path, "/");
 
 
-    // start from root (inode number 2)
-    int inode_dir = 2;
-    while (absolute != NULL) {
+        // start from root (inode number 2)
+        int inode_dir = 2;
+        while (absolute != NULL) {
 
         inode_dir = find_dir(inode_dir-1, absolute);
         
@@ -69,31 +70,32 @@ int main(int argc, char **argv) {
     } else {
 
         char *path = argv[2];
-    char *absolute;
-    // get the directory from the absolute path
-    absolute = strtok(path, "/");
+        char *absolute;
+        // get the directory from the absolute path
+        absolute = strtok(path, "/");
 
 
-    // start from root (inode number 2)
-    int inode_dir = 2;
-    while (absolute != NULL) {
+        // start from root (inode number 2)
+        int inode_dir = 2;
+        while (absolute != NULL) {
 
-        inode_dir = find_dir(inode_dir-1, absolute);
-        
-        // No such directory is found
-        if (inode_dir == -1) {
-            printf("No such file or directory\n");
-            return 0;
+            inode_dir = find_dir(inode_dir-1, absolute);
+            
+            // No such directory is found
+            if (inode_dir == -1) {
+                printf("No such file or directory\n");
+                return 0;
+            }
+
+            // next directory in absolute path
+            absolute = strtok(NULL, "/");
         }
 
-        // next directory in absolute path
-        absolute = strtok(NULL, "/");
-    }
 
+        // helper: print to user
+        print_inode(inode_dir-1);
 
-    // helper: print to user
-    print_inode(inode_dir-1);
+        }
 
-    }
-    return 0;
+        return 0;
 }
