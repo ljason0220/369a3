@@ -102,7 +102,7 @@ int main(int argc, char **argv) {
 
 
         // helper: print to user
-        print_inode(inode_dir-2);
+        print_inode(inode_dir);
 
         }
 
