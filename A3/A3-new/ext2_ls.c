@@ -27,25 +27,23 @@ int next_inode(int inode_num, char *dir, struct ext2_inode *inode);
 int main(int argc, char **argv) {
 
   if( (argc < 3 || argc > 4) || (argc == 4 && argv[2] != "-a")) {
-    printf("AAA: %s/n BBB: %s/n", argv[1], argv[2]);
+    // printf("AAA: %s/n BBB: %s/n", argv[1], argv[2]);
     fprintf(stderr, "Usage: readimg <image file name> <optional: flag -a> <absolute path>\n");
     exit(1);
     }
 
     int fd = open(argv[1], O_RDWR);
- //    disk = mmap(NULL, 128 * 1024, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
- //  	if(disk == MAP_FAILED) {
- //  		perror("mmap");
- //    	exit(1);
-	// }
 
     // call hlper function
 	read_disk(fd);
 
-	char *path = argv[2];
-	char *absolute;
-	// get the directory from the absolute path
-	absolute = strtok(path, "/");
+    char *check = argv[2]
+    if (argv[2] == "-a") {
+
+        char *path = argv[3];
+    char *absolute;
+    // get the directory from the absolute path
+    absolute = strtok(path, "/");
 
 
     // start from root (inode number 2)
@@ -68,5 +66,34 @@ int main(int argc, char **argv) {
     // helper: print to user
     print_inode(inode_dir-1);
 
+    } else {
+
+        char *path = argv[2];
+    char *absolute;
+    // get the directory from the absolute path
+    absolute = strtok(path, "/");
+
+
+    // start from root (inode number 2)
+    int inode_dir = 2;
+    while (absolute != NULL) {
+
+        inode_dir = find_dir(inode_dir-1, absolute);
+        
+        // No such directory is found
+        if (inode_dir == -1) {
+            printf("No such file or directory\n");
+            return 0;
+        }
+
+        // next directory in absolute path
+        absolute = strtok(NULL, "/");
+    }
+
+
+    // helper: print to user
+    print_inode(inode_dir-1);
+
+    }
     return 0;
 }
