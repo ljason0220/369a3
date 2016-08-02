@@ -93,7 +93,7 @@ int main(int argc, char **argv) {
             printf("NO FLAG\n");
 
             // No such directory is found
-            if (inode_dir == -2) {
+            if (inode_dir == -1) {
                 printf("No such file or directory\n");
                 return 0;
             }
@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
 
 
         // helper: print to user
-        print_inode(inode_dir-1);
+        print_inode(inode_dir-2);
 
         }
 
