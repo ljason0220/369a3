@@ -102,10 +102,9 @@ int main(int argc, char **argv) {
 
 
         // helper: print to user
-        if (file_type == 1){
-            print_inode(inode_dir-1);
+        print_inode(inode_dir-1);
+
         }
-    }
 
         return 0;
 }
