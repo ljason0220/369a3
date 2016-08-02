@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
         absolute = strtok(NULL, "/");
     }
 
-
+    printf(".\n..\n")
     // helper: print to user
     print_inode(inode_dir-1);
 
