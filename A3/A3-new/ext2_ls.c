@@ -21,15 +21,18 @@ ENOENT. */
 unsigned char *disk;
 struct ext2_group_desc *grpdsc;
 struct ext2_inode *inode_table;
+char *flag = "-a";
 
 int next_inode(int inode_num, char *dir, struct ext2_inode *inode);
 
 int main(int argc, char **argv) {
 
+    char *check = argv[2];
+
     //test code
     printf("AAA: %s\nBBB: %s\n", argv[1], argv[2]);
 
-    if( (argc < 3 || argc > 4) || (argc == 4 && argv[2] != "-a")) {
+    if( (argc < 3 || argc > 4) || (argc == 4 && (strncmp(check, flag) != 0)) {
         fprintf(stderr, "Usage: readimg <image file name> <optional: flag -a> <absolute path>\n");
         exit(1);
     }
@@ -38,8 +41,6 @@ int main(int argc, char **argv) {
 
     // call hlper function
 	read_disk(fd);
-
-    char *check = argv[2];
 
     if (check == "-a") {
 
