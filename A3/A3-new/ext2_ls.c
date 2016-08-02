@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
 
 
         // helper: print to user
-        print_inode(inode_dir);
+        print_inode(inode_dir-1);
 
         }
 
