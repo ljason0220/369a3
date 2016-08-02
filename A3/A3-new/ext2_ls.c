@@ -56,8 +56,8 @@ int main(int argc, char **argv) {
 
         inode_dir = find_dir(inode_dir-1, absolute);
 
-        // //test code
-        // printf("WITH FLAG\n");
+        //test code
+        printf("WITH FLAG\n");
         
         // No such directory is found
         if (inode_dir == -1) {
@@ -84,13 +84,13 @@ int main(int argc, char **argv) {
 
 
         // start from root (inode number 2)
-        int inode_dir = 2;
+        int inode_dir = 3;
         while (absolute != NULL) {
 
             inode_dir = find_dir(inode_dir-1, absolute);
             
-            // //test code
-            // printf("NO FLAG\n");
+            //test code
+            printf("NO FLAG\n");
 
             // No such directory is found
             if (inode_dir == -1) {
