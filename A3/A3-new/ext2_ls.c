@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
     //test code
     printf("AAA: %s\nBBB: %s\n", argv[1], argv[2]);
 
-    if( (argc < 3 || argc > 4) || (argc == 4 && (strncmp(check, flag) != 0)) {
+    if( (argc < 3 || argc > 4) || (argc == 4 && (strcmp(check, flag) != 0))) {
         fprintf(stderr, "Usage: readimg <image file name> <optional: flag -a> <absolute path>\n");
         exit(1);
     }
