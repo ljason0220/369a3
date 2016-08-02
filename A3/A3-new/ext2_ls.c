@@ -55,6 +55,9 @@ int main(int argc, char **argv) {
         while (absolute != NULL) {
 
         inode_dir = find_dir(inode_dir-1, absolute);
+
+        //test code
+        printf("WITH FLAG\n");
         
         // No such directory is found
         if (inode_dir == -1) {
@@ -85,8 +88,8 @@ int main(int argc, char **argv) {
             inode_dir = find_dir(inode_dir-1, absolute);
             
             //test code
-            printf("CHECK\n");
-            
+            printf("NO FLAG\n");
+
             // No such directory is found
             if (inode_dir == -1) {
                 printf("No such file or directory\n");
