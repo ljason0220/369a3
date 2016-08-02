@@ -84,6 +84,9 @@ int main(int argc, char **argv) {
 
             inode_dir = find_dir(inode_dir-1, absolute);
             
+            //test code
+            printf("CHECK\n");
+            
             // No such directory is found
             if (inode_dir == -1) {
                 printf("No such file or directory\n");
